@@ -3,10 +3,10 @@ Vagrant.configure("2") do |config|
 ENV['VAGRANT_DEFAULT_PROVIDER'] = 'vmware_desktop'
 
 boxes = [
-  { :name => "SANS-DC01",  :ip => "192.168.56.10", :box => "StefanScherer/windows_2019", :box_version => "2021.05.15", :os => "windows", :memory => 4096},
-  { :name => "SANS-DC02",  :ip => "192.168.56.11", :box => "StefanScherer/windows_2019", :box_version => "2021.05.15", :os => "windows", :memory => 4096},
-  { :name => "SANS-SRV02", :ip => "192.168.56.12", :box => "StefanScherer/windows_2019", :box_version => "2021.05.15", :os => "windows", :memory => 4096},
-  { :name => "SANS-DC03",  :ip => "192.168.56.13", :box => "StefanScherer/windows_2019", :box_version => "2021.05.15", :os => "windows", :memory => 4096}
+  { :name => "SANS-DC01",  :ip => "192.168.56.10", :box => "StefanScherer/windows_2022", :box_version => "2021.08.23", :os => "windows", :memory => 4096},
+  { :name => "SANS-DC02",  :ip => "192.168.56.11", :box => "StefanScherer/windows_2022", :box_version => "2021.08.23", :os => "windows", :memory => 4096},
+  { :name => "SANS-SRV02", :ip => "192.168.56.12", :box => "StefanScherer/windows_2022", :box_version => "2021.08.23", :os => "windows", :memory => 4096},
+  { :name => "SANS-DC03",  :ip => "192.168.56.13", :box => "StefanScherer/windows_2022", :box_version => "2021.08.23", :os => "windows", :memory => 4096}
   #{ :name => "SANS-KALI", :ip => "192.168.56.200", :box => "kalilinux/rolling", :forwarded_port => [ {:guest => 22, :host => 2310, :id => "ssh"} ] }
   
    #ELK
