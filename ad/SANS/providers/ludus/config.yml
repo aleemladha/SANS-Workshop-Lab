@@ -1,7 +1,7 @@
 ludus:
   - vm_name: "{{ range_id }}-dcpwnzone"
     hostname: "{{ range_id }}-dcpwnzone"
-    template: win2019-server-x64-template
+    template: win2022-server-x64-template
     vlan: 10
     ip_last_octet: 10
     ram_gb: 4
@@ -10,7 +10,7 @@ ludus:
       sysprep: true
   - vm_name: "{{ range_id }}-dcsandbox"
     hostname: "{{ range_id }}-dcsandbox"
-    template: win2019-server-x64-template
+    template: win2022-server-x64-template
     vlan: 20
     ip_last_octet: 10
     ram_gb: 4
@@ -19,7 +19,7 @@ ludus:
       sysprep: true
   - vm_name: "{{ range_id }}-ws01"
     hostname: "{{ range_id }}-ws01"
-    template: win2019-server-x64-template
+    template: win2022-server-x64-template
     vlan: 20
     ip_last_octet: 11
     ram_gb: 4
@@ -28,7 +28,7 @@ ludus:
       sysprep: true
   - vm_name: "{{ range_id }}-dctreasureisland"
     hostname: "{{ range_id }}-dctreasure"
-    template: win2019-server-x64-template
+    template: win2022-server-x64-template
     vlan: 30
     ip_last_octet: 10
     ram_gb: 4
