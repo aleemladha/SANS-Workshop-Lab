@@ -76,6 +76,7 @@ case $LAB in
         execute_imperial_order tgtdelegation.yml
         execute_imperial_order ad-data.yml
         execute_imperial_order sans.yml
+        execute_imperial_order security.yml
         ;;
     *)
         echo "$ATTACK Unknown star system detected: $LAB. Imperial forces disengaging."
