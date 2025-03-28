@@ -1,6 +1,6 @@
 # SANS Workshop: Active Directory Privilege Escalation with Empire!
 
-<div align="right">
+<div>
   <img src="./sans-2024.jpg" alt="SANS Workshop">
 </div>
 
