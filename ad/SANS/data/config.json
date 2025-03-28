@@ -1,0 +1,71 @@
+{
+    "lab": {
+        "hosts": {
+            "dc01": {
+                "hostname": "pwnzone-dc01",
+                "type": "dc",
+                "local_admin_password": "AnsibleAutomation123!",
+                "domain": "pwnzone.lab",
+                "path": "DC=pwnzone,DC=lab",
+                "scripts": ["sidhistory.ps1"],
+                "vulns": ["disable_firewall"],
+                "security": []
+            },
+            "dc02": {
+                "hostname": "sandbox-dc01",
+                "type": "dc",
+                "local_admin_password": "AnsibleAutomation123!",
+                "domain": "sandbox.pwnzone.lab",
+                "path": "DC=sandbox,DC=pwnzone,DC=lab",
+                "scripts": [],
+                "vulns": ["disable_firewall"]
+            },
+        "srv02" : {
+            "hostname" : "ws01",
+            "type" : "server",
+            "local_admin_password": "AnsibleAutomation123!",
+            "domain" : "sandbox.pwnzone.lab",
+            "path" : "DC=sandbox,DC=pwnzone,DC=lab",
+            "use_laps": false,
+            "scripts" : [],
+            "vulns" : ["disable_firewall"]
+        },            
+            "dc03": {
+                "hostname": "treasure-dc01",
+                "type": "dc",
+                "local_admin_password": "AnsibleAutomation123!",
+                "domain": "treasureisland.lab",
+                "path": "DC=treasureisland,DC=lab",
+                "scripts": [],
+                "vulns": ["disable_firewall"]
+            }
+        },
+        "domains": {
+            "pwnzone.lab": {
+                "dc": "dc01",
+                "domain_password": "AnsibleAutomation123!",
+                "netbios_name": "PWNZONE",
+                "trust": "treasureisland.lab",
+                "groups": {},
+                "users": {}
+            },
+            "sandbox.pwnzone.lab": {
+                "dc": "dc02",
+                "domain_password": "AnsibleAutomation123!",
+                "netbios_name": "SANDBOX",
+                "trust": "",
+                "groups": {},
+                "users": {}
+            },
+            "treasureisland.lab": {
+                "dc": "dc03",
+                "domain_password": "AnsibleAutomation123!",
+                "netbios_name": "TREASUREISLAND",
+                "trust": "pwnzone.lab",
+                "groups": {},
+                "users": {}
+            }
+        }
+    }
+}
+

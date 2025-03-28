@@ -1,0 +1,138 @@
+Vagrant.configure("2") do |config|
+
+ENV['VAGRANT_DEFAULT_PROVIDER'] = 'vmware_desktop'
+
+boxes = [
+  { :name => "SANS-DC01",  :ip => "192.168.56.10", :box => "StefanScherer/windows_2019", :box_version => "2021.05.15", :os => "windows", :memory => 4096},
+  { :name => "SANS-DC02",  :ip => "192.168.56.11", :box => "StefanScherer/windows_2019", :box_version => "2021.05.15", :os => "windows", :memory => 4096},
+  { :name => "SANS-SRV02", :ip => "192.168.56.12", :box => "StefanScherer/windows_2019", :box_version => "2021.05.15", :os => "windows", :memory => 4096},
+  { :name => "SANS-DC03",  :ip => "192.168.56.13", :box => "StefanScherer/windows_2019", :box_version => "2021.05.15", :os => "windows", :memory => 4096}
+  #{ :name => "SANS-KALI", :ip => "192.168.56.200", :box => "kalilinux/rolling", :forwarded_port => [ {:guest => 22, :host => 2310, :id => "ssh"} ] }
+  
+   #ELK
+ #{ :name => "elk", :ip => "192.168.56.50", :box => "bento/ubuntu-22.04", :os => "linux", :forwarded_port => [  {:guest => 22, :host => 2210, :id => "ssh"} ] }
+]
+
+  config.vm.provider "virtualbox" do |v|
+    v.memory = 4000
+    v.cpus = 2
+  end
+  
+  # make the vms appear in the GUI of vmware workstation
+  config.vm.provider "vmware_desktop" do |v|
+  v.gui = true
+  end
+  
+  config.vm.provider "vmware_desktop" do |v|
+    v.vmx["memsize"] = "2000"
+    v.vmx["numvcpus"] = "2"
+    # v.force_vmware_license = "workstation"  # force the licence for fix some vagrant plugin issue
+  end
+
+  # disable rdp forwarded port inherited from StefanScherer box
+  config.vm.network :forwarded_port, guest: 3389, host: 3389, id: "rdp", auto_correct: true, disabled: true
+
+  # no autoupdate if vagrant-vbguest is installed
+  if Vagrant.has_plugin?("vagrant-vbguest") then
+    config.vbguest.auto_update = false
+  end
+
+  config.vm.boot_timeout = 600
+  config.vm.graceful_halt_timeout = 600
+  config.winrm.retry_limit = 30
+  config.winrm.retry_delay = 10
+
+  boxes.each do |box|
+    config.vm.define box[:name] do |target|
+      # BOX
+      target.vm.provider "virtualbox" do |v|
+        v.name = box[:name]
+        v.customize ["modifyvm", :id, "--groups", "/GOAD"]
+      end
+      target.vm.box_download_insecure = box[:box]
+      target.vm.box = box[:box]
+      if box.has_key?(:box_version)
+        target.vm.box_version = box[:box_version]
+      end
+
+      # issues/49
+      target.vm.synced_folder '.', '/vagrant', disabled: true
+
+      # IP
+      target.vm.network :private_network, ip: box[:ip]
+
+      # OS specific
+      if box[:os] == "windows"
+        target.vm.guest = :windows
+        target.vm.communicator = "winrm"
+        target.vm.provision :shell, :path => "../../../../vagrant/Install-WMF3Hotfix.ps1", privileged: false
+        target.vm.provision :shell, :path => "../../../../vagrant/ConfigureRemotingForAnsible.ps1", privileged: false
+		# Fix that pesky DNS issue and disable windows firewall before ansible esp for DC02
+	    target.vm.provision "shell", inline: "netsh advfirewall set allprofiles state off", privileged: true
+        # fix ip for vmware
+        if ENV['VAGRANT_DEFAULT_PROVIDER'] == "vmware_desktop"
+          target.vm.provision :shell, :path => "../../../../vagrant/fix_ip.ps1", privileged: false, args: box[:ip]
+        end
+
+      else
+        target.vm.communicator = "ssh"
+		
+		
+		# Install ansible and deploy the SANS LAB
+		
+				if box[:name] == "SANS-KALI"
+          target.vm.provision "shell", inline: <<-SHELL
+            
+			# Ensure we're root
+if [ "$(id -u)" != "0" ]; then
+  echo "This script must be run as root" 1>&2
+  exit 1
+fi
+
+# Add repositories
+add-apt-repository -y multiverse
+
+# Get list of latest packages
+apt-get update
+
+# Make sure we're running on latest versions of things installed
+apt-get -y autoupdate
+
+#Install Python PIP
+apt-get install git -y
+sudo apt install python3-pip -y
+pip3 --version
+
+apt install -y sshpass
+
+# Download SANS LAB
+#git clone https://github.com/aleemladha/SANS-Workshop-Lab /opt/sans
+
+# Download .Net Framework, cant upload this to the git due to the size
+
+# Set up prerequisites
+pip install --upgrade pip && pip install ansible-core==2.12.6 && pip install pywinrm
+
+# Install stuff needed for Ansible
+ansible-galaxy install -r /opt/sans/ansible/requirements.yml
+
+# Launch provisioning with Ansible
+export ANSIBLE_COMMAND="ansible-playbook -i /opt/sans/ad/SANS/data/inventory -i /opt/sans/ad/SANS/providers/vmware/inventory"
+
+cd /opt/sans/ansible && /opt/sans/scripts/provisionning.sh
+			
+          SHELL
+        end
+		
+      end
+
+      if box.has_key?(:forwarded_port)
+        # forwarded port explicit
+        box[:forwarded_port] do |forwarded_port|
+          target.vm.network :forwarded_port, guest: forwarded_port[:guest], host: forwarded_port[:host], host_ip: "127.0.0.1", id: forwarded_port[:id]
+        end
+      end
+
+    end
+  end
+end
