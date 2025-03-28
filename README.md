@@ -1,68 +1,54 @@
 # SANS Workshop: Active Directory Privilege Escalation with Empire!
 
 <div>
-  <img src="./sans-2024.jpg" alt="SANS Workshop">
+<img src="./sans-2024.jpg"/>
 </div>
 
-Welcome to this workshop, where we dive into a core Active Directory component—**Kerberos**!
+Welcome to this workshop where we are going to dive into a core active directory component - Kerberos!
 
-This self-guided **Active Directory security lab** helps participants understand **Kerberos-based privilege escalation attacks**. Originally part of a **SANS workshop**, this lab is now freely available for local deployment on **VMware, VirtualBox, and Ludus**.
+This lab is a self-guided Active Directory security exercise designed to help participants understand Kerberos-based privilege escalation attacks. Originally part of a SANS workshop, this lab is now freely available for local deployment on VMware, VirtualBox, and Ludus.
 
-Participants will **build their own AD lab, configure attack tools, and execute real-world attack techniques** to escalate privileges in an Active Directory environment.
+Participants will build their own AD lab, configure attack tools, and execute real-world attack techniques to escalate privileges in an Active Directory environment.
 
-This workshop is ideal for:
-- **Blue teamers** who want to understand how adversaries attack AD.
-- **Pentesters** who are less familiar with AD environments.
+This workshop is ideally suited for blue teamers that want to peek behind the curtain and understand how adversaries attack AD and pentesters that may not be as familiar with AD environments yet.
 
-## Attacks Covered
+Attacks Covered
+🔹 Kerberoasting – Extracting service tickets to crack passwords
+🔹 DCSyncing – Extracting credentials by simulating a domain controller
+🔹 SID History Abuse – Hopping across parent/child domain trusts
+🔹 Unconstrained Delegation Abuse – Capturing privileged credentials
 
-✅ **Kerberoasting** – Extracting service tickets to crack passwords  
-✅ **DCSync Attack** – Extracting credentials by simulating a domain controller  
-✅ **SID History Abuse** – Hopping across parent/child domain trusts  
-✅ **Unconstrained Delegation Abuse** – Capturing privileged credentials  
+### Note
 
----
+Note: The following labs are related only to the usage of Empire & Starkiller and no other tools
 
-## ⚠️ Note  
-This workshop focuses exclusively on **Empire & Starkiller** and does **not** cover other tools.
+Have fun !
 
-🎉 Have fun!
+### Access the workbook here:
 
----
+- https://logout.gitbook.io/ad-privesc-with-empire 
 
-## 📖 Access the Workbook  
-🔗 [AD Privilege Escalation with Empire](https://logout.gitbook.io/ad-privesc-with-empire)
+Submit a PR to add your writeup to this list :)
 
-Want to contribute? **Submit a PR** to add your write-up!
+## Install dependencies
 
----
+> No automatic install is provided as it depend of your package manager and distribution. Here are some install command lines are given for ubuntu.
 
-## 🛠 Install Dependencies  
+## Installation
 
-⚠️ No automatic install is provided, as it depends on your **package manager and distribution**. Below are example commands for **Ubuntu**.
+- Installation depend of the provider you use, please follow the appropriate guide :
+  - [Install with VmWare](./docs/install_with_vmware.md)
+  - [Install with VirtualBox](./docs/install_with_virtualbox.md)
+  - [Install with Ludus](./docs/install_with_ludus.md)
+  - [Install with AWS](./docs/install_with_aws.md)
 
-### 🏗 Installation Guide  
-Installation varies based on the **provider** you use. Follow the appropriate guide:
+- Installation is in three parts :
+  1. Templating : this will create the template to use (needed only for proxmox) 
+  2. Providing : this will instantiate the virtual machines depending on your provider
+  3. Provisioning : it is always made with ansible, it will install all the stuff to create the lab
 
-- [Install with VMware](./docs/install_with_vmware.md)  
-- [Install with VirtualBox](./docs/install_with_virtualbox.md)  
-- [Install with Ludus](./docs/install_with_ludus.md)  
+## Special Thanks to
 
-### 🚀 Installation Steps  
-
-1️⃣ **Templating** – Creates the base template (**Required only for Proxmox**)  
-2️⃣ **Providing** – Instantiates virtual machines based on your provider  
-3️⃣ **Provisioning** – Uses **Ansible** to install and configure the lab  
-
----
-
-## 🎖 Special Thanks  
-
-- **Jean-François Maes** – [SANS Profile](https://www.sans.org/profiles/jeanfrancois-maes/) for creating this workshop  
-- **M4yFly** [@M4yFly](https://x.com/M4yFly) – For the **GOAD project** and **Ansible playbooks**  
-  *(This repo is based on the work of [Mayfly277](https://github.com/Orange-Cyberdefense/GOAD/))*  
-- **BC-SECURITY**'s development team – For **Empire** and **Starkiller**  
-
----
-
-🚀 **Happy hacking & learning!**
+- Jean-François Maes (https://www.sans.org/profiles/jeanfrancois-maes/) for creating this SANS workshop
+- M4yFly [@M4yFly](https://x.com/M4yFly) for the amazing GOAD porject and ansible playbooks (This repo is based on the work of [Mayfly277](https://github.com/Orange-Cyberdefense/GOAD/))
+- BC-SECURITY's dev team for their awesome tool Empire and StarKiller
