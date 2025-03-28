@@ -49,6 +49,6 @@ Submit a PR to add your writeup to this list :)
 
 ## Special Thanks to
 
-- Jean-François Maes (https://www.sans.org/profiles/jeanfrancois-maes/) for creating this SANS workshop
+- [Jean-François Maes](https://www.sans.org/profiles/jeanfrancois-maes/) for creating this SANS workshop
 - M4yFly [@M4yFly](https://x.com/M4yFly) for the amazing GOAD porject and ansible playbooks (This repo is based on the work of [Mayfly277](https://github.com/Orange-Cyberdefense/GOAD/))
 - [BC-SECURITY](https://github.com/BC-SECURITY/) team for their awesome tool Empire and StarKiller
