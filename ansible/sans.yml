@@ -1,0 +1,41 @@
+---
+# Load datas
+- import_playbook: data.yml
+  vars:
+    data_path: "../ad/{{domain_name}}/data/"
+  tags: 'data'
+  
+# set SANS magic vul specific scenario Details ==================================================================================================  
+- name: make sure computer account passwords never expire because snapshots
+  hosts: domain
+  tasks:
+    - name: set computer to never expire
+      win_regedit:
+        path: HKLM:\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters
+        name: DisablePasswordChange 
+        data: 1
+        type: dword
+
+#vuln logic goes here
+- name: create entrypoint service account 
+  hosts: dc02
+  tasks:
+    - name: add new service account to the domain administrator group 
+      microsoft.ad.user:
+        identity: svc_entrypoint
+        password: ChangeMe1234!
+        spn:
+          set:
+            - HTTP/ws01.sandbox.pwnzone.lab
+        state: present
+        groups:
+          set: Domain Admins
+        password_never_expires: true
+  ignore_errors: true
+
+# --------------------------------------------------------------------
+# specifics vulns linked to the scenario are here
+- name: plant fakespool server
+  hosts: dc
+  roles:
+    - fakespooler

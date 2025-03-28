@@ -1,0 +1,50 @@
+---
+# Load datas
+- import_playbook: data.yml
+  vars:
+    data_path: "../ad/{{domain_name}}/data/"
+  tags: 'data'
+# set tgt delegations ==================================================================================================
+
+
+- name: enable TGT delegation for parent-child abuse on the sandbox domain controller - this can fail, while the trust is still building so we retry a few times
+  hosts: dc02
+  tasks:
+    - name: enable TGT delegation
+      win_command: netdom.exe trust sandbox.pwnzone.lab /domain:pwnzone.lab /EnableTGTDelegation:Yes
+      retries: 2
+      delay: 30
+
+- name: enable TGT delegation for parent-child abuse on the pwnzone domain controller - this can fail, while the trust is still building so we retry a few times
+  hosts: dc01
+  tasks:
+    - name: enable TGT delegation
+      win_command: netdom.exe trust pwnzone.lab /domain:sandbox.pwnzone.lab /EnableTGTDelegation:Yes
+      retries: 2
+      delay: 30
+
+- name: enable TGT delegation for parent-child abuse on the sandbox domain controller - this can fail, while the trust is still building so we retry a few times
+  hosts: dc01
+  tasks:
+    - name: enable TGT delegation
+      win_command: netdom.exe trust pwnzone.lab /domain:treasureisland.lab /EnableTGTDelegation:Yes
+      retries: 2
+      delay: 30
+
+- name: enable TGT delegation for parent-child abuse on the pwnzone domain controller - this can fail, while the trust is still building so we retry a few times
+  hosts: dc03
+  tasks:
+    - name: enable TGT delegation
+      win_command: netdom.exe trust treasureisland.lab /domain:pwnzone.lab /EnableTGTDelegation:Yes
+      retries: 2
+      delay: 30
+
+- name: reboot all DCs to apply deleg settings
+  hosts: dc
+  tasks:
+    - name: Reboot
+      win_reboot:
+    - name: Wait for machines to come back online
+      wait_for_connection:
+        delay: 10
+        timeout: 300

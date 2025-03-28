@@ -1,0 +1,33 @@
+# Load datas
+- import_playbook: data.yml
+  vars:
+    data_path: "../ad/{{domain_name}}/data/"
+  tags: 'data'
+
+# Prepare servers
+- import_playbook: build.yml
+# Add monitoring
+#- import_playbook: elk.yml
+# --------------------------------------------------------------------
+# VM ready - start insert specific scenario
+# --------------------------------------------------------------------
+# Turn server into DC and load active directory data (users/groups/ou)
+#- import_playbook: ad.yml
+# create main domains, child domain and enroll workstations
+
+## AD ----------
+- import_playbook: ad-servers.yml
+- import_playbook: ad-parent_domain.yml
+- import_playbook: ad-child_domain.yml
+- import_playbook: ad-members.yml
+# create the trust relationships
+- import_playbook: ad-trusts.yml
+#- import_playbook: dnsforwarder.yml
+- import_playbook: tgtdelegation.yml
+# import the ad datas : users/groups...
+- import_playbook: ad-data.yml
+## SECURITY -----
+# --------------------------------------------------------------------
+# specifics security linked to the sans workshop are here
+- import_playbook: sans.yml
+- import_playbook: reboot.yml
