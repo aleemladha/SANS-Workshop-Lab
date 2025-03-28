@@ -1,4 +1,4 @@
-# Ludus setup (aka "Virtualbox c'est no way")
+# Ludus setup (the best way to deploy any lab )
 
 <div align="center">
   <img alt="vagrant" width="150" height="150" src="./img/icon_ludus.png">
@@ -8,5 +8,4 @@
 
 ## Installation : Go to 
 
-https://docs.ludus.cloud/docs/category/environment-guides
-
+https://docs.ludus.cloud/docs/environment-guides/sans-workshop-active-directory-privilege-escalation-with-empire/
