@@ -1,7 +1,7 @@
 # SANS Workshop: Active Directory Privilege Escalation with Empire!
 
 <div>
-<img src="./sans-2024.jpeg"/>
+<img src="./sans-2024.jpg"/>
 </div>
 
 Welcome to this workshop where we are going to dive into a core active directory component - Kerberos!
