@@ -49,80 +49,106 @@
                 "domain_password": "AnsibleAutomation123!",
                 "netbios_name": "PWNZONE",
                 "trust": "treasureisland.lab",
-                "groups": {},
-                "users": {
-					"mchang": {
-            "firstname": "Megan",
-            "lastname": "Chang",
-            "email": "megan.chang@pwnzone.lab",
-            "password": "UJ3CoHxL5vTbE9v",
-            "ou": "HR",
-            "groups": ["HR"]
-        },
-        "rgreen": {
-            "firstname": "Robert",
-            "lastname": "Green",
-            "email": "robert.green@pwnzone.lab",
-            "password": "yeRIKwCSIWtjcYo",
-            "ou": "Engineering",
-            "groups": ["Engineering"]
-        },
-        "wsullivan": {
-            "firstname": "William",
-            "lastname": "Sullivan",
-            "email": "william.sullivan@pwnzone.lab",
-            "password": "KbVUeiNCCvMDHhl",
-            "ou": "Sales",
-            "groups": ["Sales"]
-        },
-        "kturner": {
-            "firstname": "Kristen",
-            "lastname": "Turner",
-            "email": "kristen.turner@pwnzone.lab",
-            "password": "3sNvIILjClcYJxk",
-            "ou": "HR",
-            "groups": ["HR"]
-        },
-        "tsilva": {
-            "firstname": "Thomas",
-            "lastname": "Silva",
-            "email": "thomas.silva@pwnzone.lab",
-            "password": "3KKQIREaxpthGxn",
-            "ou": "HR",
-            "groups": ["HR"]
-        },
-        "rwagner": {
-            "firstname": "Rebecca",
-            "lastname": "Wagner",
-            "email": "rebecca.wagner@pwnzone.lab",
-            "password": "FD5Zz9T0IXXih3N",
-            "ou": "Accounting",
-            "groups": ["Accounting"]
-        },
-        "cbruce": {
-            "firstname": "Crystal",
-            "lastname": "Bruce",
-            "email": "crystal.bruce@pwnzone.lab",
-            "password": "nP747E00wb2RMoK",
-            "ou": "None",
-            "groups": ["Domain Admins"]
-        },
-        "jdennis": {
-            "firstname": "John",
-            "lastname": "Dennis",
-            "email": "john.dennis@pwnzone.lab",
-            "password": "78tfOWI8Yu0Vmiv",
-            "ou": "None",
-            "groups": ["Domain Admins"]
-        }}
+                "groups": {
+					
+										"universal" : {},
+                "global" : {
+                    "HR" : {
+                        "path" : "CN=Users,DC=pwnzone,DC=lab"
+                    },
+					"Engineering" : {
+                        "path" : "CN=Users,DC=pwnzone,DC=lab"
+                    },
+					"Sales" : {
+                        "path" : "CN=Users,DC=pwnzone,DC=lab"
+                    },
+					"Accounting" : {
+                        "path" : "CN=Users,DC=pwnzone,DC=lab"
+                    },
+					"IT" : {
+                        "path" : "CN=Users,DC=pwnzone,DC=lab"
+                    }
+					
+				}
+					
+				},
+                "users": {			
+			"mchang": {
+        "firstname": "Megan",
+        "surname": "Chang",
+        "password": "UJ3CoHxL5vTbE9v",
+        "city": "-",
+        "description": "Megan Chang",
+        "groups": ["HR"],
+        "path": "CN=Users,DC=pwnzone,DC=lab"
+    },
+    "rgreen": {
+        "firstname": "Robert",
+        "surname": "Green",
+        "password": "yeRIKwCSIWtjcYo",
+        "city": "-",
+        "description": "Robert Green",
+        "groups": ["Engineering"],
+        "path": "CN=Users,DC=pwnzone,DC=lab"
+    },
+    "wsullivan": {
+        "firstname": "William",
+        "surname": "Sullivan",
+        "password": "KbVUeiNCCvMDHhl",
+        "city": "-",
+        "description": "William Sullivan",
+        "groups": ["Sales"],
+        "path": "CN=Users,DC=pwnzone,DC=lab"
+    },
+    "cbruce": {
+        "firstname": "Crystal",
+        "surname": "Bruce",
+        "password": "nP747E00wb2RMoK",
+        "city": "-",
+        "description": "Crystal Bruce",
+        "groups": ["Domain Admins"],
+        "path": "CN=Users,DC=pwnzone,DC=lab"
+    },
+    "jdennis": {
+        "firstname": "John",
+        "surname": "Dennis",
+        "password": "78tfOWI8Yu0Vmiv",
+        "city": "-",
+        "description": "John Dennis",
+        "groups": ["Domain Admins"],
+        "path": "CN=Users,DC=pwnzone,DC=lab"
+    }
+					
+				}
             },
             "sandbox.pwnzone.lab": {
                 "dc": "dc02",
                 "domain_password": "AnsibleAutomation123!",
                 "netbios_name": "SANDBOX",
                 "trust": "",
-                "groups": {},
-                "users": {"mchang": {
+            "groups": {
+					"universal" : {},
+                "global" : {
+                    "HR" : {
+                        "path" : "CN=Users,DC=sandbox,DC=pwnzone,DC=lab"
+                    },
+					"Engineering" : {
+                        "path" : "CN=Users,DC=sandbox,DC=pwnzone,DC=lab"
+                    },
+					"Sales" : {
+                        "path" : "CN=Users,DC=sandbox,DC=pwnzone,DC=lab"
+                    },
+					"Accounting" : {
+                        "path" : "CN=Users,DC=sandbox,DC=pwnzone,DC=lab"
+                    },
+					"IT" : {
+                        "path" : "CN=Users,DC=sandbox,DC=pwnzone,DC=lab"
+                    }
+					
+				}
+			},
+                "users": {
+					"mchang": {
             "firstname": "Megan",
             "password": "DGmUoeVr5IL1u0P",
             "description": "IT",
@@ -282,7 +308,27 @@
                 "domain_password": "AnsibleAutomation123!",
                 "netbios_name": "TREASUREISLAND",
                 "trust": "pwnzone.lab",
-                "groups": {},
+                "groups": {
+										"universal" : {},
+                "global" : {
+                    "HR" : {
+                        "path" : "CN=Users,DC=treasureisland,DC=lab"
+                    },
+					"Engineering" : {
+                        "path" : "CN=Users,DC=treasureisland,DC=lab"
+                    },
+					"Sales" : {
+                        "path" : "CN=Users,DC=treasureisland,DC=lab"
+                    },
+					"Accounting" : {
+                        "path" : "CN=Users,DC=treasureisland,DC=lab"
+                    },
+					"IT" : {
+                        "path" : "CN=Users,DC=treasureisland,DC=lab"
+                    }
+					
+				}
+				},
                 "users": {
 					 "mchang": {
                 "firstname": "Megan",
@@ -366,3 +412,4 @@
         }
     }
 }
+
