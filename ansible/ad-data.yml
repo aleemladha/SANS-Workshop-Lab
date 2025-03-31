@@ -36,10 +36,4 @@
   vars:
     hosts_dict: "{{lab.hosts}}"
     member_domain: "{{lab.hosts[dict_key].domain}}"
-    domain_password: "{{lab.domains[member_domain].domain_password}}"
-
-- name: populate ad
-  hosts: dc
-  roles:
-    - adpopulation
-  ignore_errors: true    
+    domain_password: "{{lab.domains[member_domain].domain_password}}"  
