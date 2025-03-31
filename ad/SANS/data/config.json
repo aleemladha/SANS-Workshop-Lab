@@ -28,7 +28,7 @@
             "path" : "DC=sandbox,DC=pwnzone,DC=lab",
             "use_laps": false,
             "local_groups": {
-                    "Remote Desktop Users": [sandbox\\jross]
+                    "Remote Desktop Users": ["sandbox\\jross"]
                 },
             "scripts" : [],
             "vulns" : ["disable_firewall"]
