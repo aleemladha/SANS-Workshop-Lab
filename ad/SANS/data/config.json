@@ -50,7 +50,8 @@
                 "netbios_name": "PWNZONE",
                 "trust": "treasureisland.lab",
                 "groups": {},
-                "users": {"mchang": {
+                "users": {
+					"mchang": {
             "firstname": "Megan",
             "lastname": "Chang",
             "email": "megan.chang@pwnzone.lab",
@@ -283,78 +284,7 @@
                 "trust": "pwnzone.lab",
                 "groups": {},
                 "users": {
-        "mchang": {
-            "firstname": "Megan",
-            "password": "UJ3CoHxL5vTbE9v",
-            "description": "Megan Chang",
-            "groups": [],
-            "path": "CN=Users,DC=pwnzone,DC=lab"
-        },
-        "rgreen": {
-            "firstname": "Robert",
-            "password": "yeRIKwCSIWtjcYo",
-            "description": "Robert Green",
-            "groups": [],
-            "path": "CN=Users,DC=pwnzone,DC=lab"
-        },
-        "wsullivan": {
-            "firstname": "William",
-            "password": "KbVUeiNCCvMDHhl",
-            "description": "William Sullivan",
-            "groups": [],
-            "path": "CN=Users,DC=pwnzone,DC=lab"
-        },
-        "kturner": {
-            "firstname": "Kristen",
-            "password": "3sNvIILjClcYJxk",
-            "description": "Kristen Turner",
-            "groups": [],
-            "path": "CN=Users,DC=pwnzone,DC=lab"
-        },
-        "tsilva": {
-            "firstname": "Thomas",
-            "password": "3KKQIREaxpthGxn",
-            "description": "Thomas Silva",
-            "groups": [],
-            "path": "CN=Users,DC=pwnzone,DC=lab"
-        },
-        "rwagner": {
-            "firstname": "Rebecca",
-            "password": "FD5Zz9T0IXXih3N",
-            "description": "Rebecca Wagner",
-            "groups": [],
-            "path": "CN=Users,DC=pwnzone,DC=lab"
-        },
-        "jcampos": {
-            "firstname": "Juan",
-            "password": "ymn6SMrpmaGdtKa",
-            "description": "Juan Campos",
-            "groups": [],
-            "path": "CN=Users,DC=pwnzone,DC=lab"
-        },
-        "cking": {
-            "firstname": "Christine",
-            "password": "bqlO3Gbcm1VOPHV",
-            "description": "Christine King",
-            "groups": [],
-            "path": "CN=Users,DC=pwnzone,DC=lab"
-        },
-        "rmcgrath": {
-            "firstname": "Renee",
-            "password": "6fr6SPslEmcb7JX",
-            "description": "Renee Mcgrath",
-            "groups": [],
-            "path": "CN=Users,DC=pwnzone,DC=lab"
-        },
-        "lbarrera": {
-            "firstname": "Lisa",
-            "password": "hQGsibC1CdxDlNd",
-            "description": "Lisa Barrera",
-            "groups": [],
-            "path": "CN=Users,DC=pwnzone,DC=lab"
-        },
-        "treasureisland": {
-            "mchang": {
+					 "mchang": {
                 "firstname": "Megan",
                 "password": "IpOFk6OfXV3YsIF",
                 "description": "Megan Chang",
@@ -430,9 +360,9 @@
                 "description": "Kyle Blair",
                 "groups": ["Domain Admins"],
                 "path": "CN=Users,DC=treasureisland,DC=lab"
-            }}
+            }
+				}
             }
         }
     }
 }
-
