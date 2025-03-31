@@ -282,7 +282,7 @@
                 "netbios_name": "TREASUREISLAND",
                 "trust": "pwnzone.lab",
                 "groups": {},
-                "users": {    "users": {
+                "users": {
         "mchang": {
             "firstname": "Megan",
             "password": "UJ3CoHxL5vTbE9v",
