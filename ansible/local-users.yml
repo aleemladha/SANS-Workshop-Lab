@@ -12,5 +12,5 @@
       ansible.windows.win_group_membership:
         name: Remote Desktop Users
         members: 
-          - "SANDBIX\\jross"
+          - "SANDBOX\\jross"
         state: present
