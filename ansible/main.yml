@@ -28,10 +28,10 @@
 # import the ad datas : users/groups...
 - import_playbook: ad-data.yml
 - import_playbook: ad-data.yml
-- import_playbook: local-users.yml
 ## SECURITY -----
 # --------------------------------------------------------------------
 # specifics security linked to the sans workshop are here
 - import_playbook: sans.yml
 - import_playbook: security.yml
+- import_playbook: local-users.yml
 - import_playbook: reboot.yml
