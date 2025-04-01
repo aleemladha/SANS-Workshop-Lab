@@ -1,6 +1,5 @@
-- name: "Create OU"
-  win_dsc:
-    resource_name: ADOrganizationalUnit
+- name: Create Organizational Units
+  microsoft.ad.ou:
     name: "{{ item.key }}"
-    path:  "{{ item.value.path }}"
-  with_dict: "{{ad_ou}}"
+    path: "{{ item.value.path }}"
+  loop: "{{ ad_ou | dict2items }}"
