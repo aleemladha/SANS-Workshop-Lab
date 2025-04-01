@@ -50,11 +50,11 @@
                 "netbios_name": "PWNZONE",
                 "trust": "treasureisland.lab",
 				"organisation_units" : {
-                "HR" : { "path" : "DC=pwnzone,DC=local"},
-                "Engineering" : { "path" : "DC=pwnzone,DC=local"},
-                "Sales"  : { "path" : "DC=pwnzone,DC=local"},
-                "Accounting"  : { "path" : "DC=pwnzone,DC=local"},
-                "IT"  : { "path" : "DC=pwnzone,DC=local"}
+                "HR" : { "path" : "DC=pwnzone,DC=lab"},
+                "Engineering" : { "path" : "DC=pwnzone,DC=lab"},
+                "Sales"  : { "path" : "DC=pwnzone,DC=lab"},
+                "Accounting"  : { "path" : "DC=pwnzone,DC=lab"},
+                "IT"  : { "path" : "DC=pwnzone,DC=lab"}
             },
                 "groups": {
 					
