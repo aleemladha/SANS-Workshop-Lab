@@ -1,4 +1,4 @@
-# SANS Workshop: Active Directory Privilege Escalation with Empire!
+# SANS Workshop: SEC565 Active Directory Privilege Escalation with Empire!
 
 <div>
 <img src="./sans-2024.jpg"/>
