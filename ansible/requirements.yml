@@ -7,6 +7,7 @@ collections:
   - name: community.windows
     version: 1.11.0
   - name: chocolatey.chocolatey
+  - name: microsoft.ad
 # - name: goad.windows
 #   type: dir
 #   source: ./collections/goad/windows
